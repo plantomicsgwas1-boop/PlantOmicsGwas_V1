@@ -1,0 +1,109 @@
+[build-system]
+requires = ["setuptools>=70.0", "wheel", "build"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "PlantOmicsGwas"
+version = "1.0.0"
+description = "Integrated GWAS, genomic prediction, GUI, CLI, Compute Engine, and HPC pipeline for plant genomics."
+readme = { file = "README.md", content-type = "text/markdown" }
+requires-python = ">=3.10"
+license = { text = "MIT" }
+
+authors = [
+    { name = "Ahmed Yassin", email = "ahmedyassin300@outlook.com" },
+    { name = "Falak Sher Khan", email = "falak.khan@pku.edu.cn" }
+]
+
+maintainers = [
+    { name = "Ahmed Yassin", email = "ahmedyassin300@outlook.com" }
+]
+
+keywords = [
+    "GWAS",
+    "Plant Genomics",
+    "Bioinformatics",
+    "Genomic Prediction",
+    "Variant Calling",
+    "Machine Learning",
+    "HPC",
+    "CLI",
+    "Pangenome",
+    "Plant Breeding"
+]
+
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Developers",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Operating System :: POSIX :: Linux",
+    "Operating System :: Microsoft :: Windows",
+    "Operating System :: MacOS",
+    "License :: OSI Approved :: MIT License",
+    "Natural Language :: English"
+]
+
+dependencies = [
+    "numpy>=1.26",
+    "pandas>=2.0",
+    "scipy>=1.11",
+    "matplotlib>=3.7",
+    "scikit-learn>=1.3",
+    "dearpygui>=1.11",
+    "pyyaml>=6.0"
+]
+
+[project.optional-dependencies]
+ml = [
+    "xgboost>=2.0"
+]
+
+gwas = [
+    "fastlmm; python_version < '3.12'",
+    "pysnptools",
+    "geneview"
+]
+
+hpc = [
+    "pyyaml>=6.0"
+]
+
+all = [
+    "xgboost>=2.0",
+    "fastlmm; python_version < '3.12'",
+    "pysnptools",
+    "geneview",
+    "pyyaml>=6.0"
+]
+
+[project.scripts]
+plantomicsgwas = "plantvarfilter.cli:main"
+plantomicsgwas-gui = "plantvarfilter.main_ui:main"
+plantomicsgwas-compute = "plantvarfilter.compute.compute_cli:main"
+plantomicsgwas-setup-env = "plantvarfilter.setup_env:main"
+
+[project.urls]
+Homepage = "https://github.com/AHMEDY3DGENOME/PlantOmicsGWAS"
+Documentation = "https://github.com/AHMEDY3DGENOME/PlantOmicsGWAS/wiki"
+Repository = "https://github.com/AHMEDY3DGENOME/PlantOmicsGWAS"
+"Issue Tracker" = "https://github.com/AHMEDY3DGENOME/PlantOmicsGWAS/issues"
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["plantvarfilter*"]
+
+[tool.setuptools.package-data]
+plantvarfilter = [
+    "assets/**/*",
+    "windows/*.ini",
+    "install_plantomicsgwas.sh"
+]
