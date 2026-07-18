@@ -5,7 +5,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "PlantOmicsGwas"
-version = "1.0.1"
+version = "1.0.2"
 description = "Integrated GWAS, genomic prediction, GUI, CLI, Compute Engine, and HPC pipeline for plant genomics."
 readme = { file = "README.md", content-type = "text/markdown" }
 requires-python = ">=3.10"
@@ -112,6 +112,8 @@ include = ["plantvarfilter*"]
 [tool.setuptools.package-data]
 plantvarfilter = [
     "assets/**/*",
-    "windows/*.ini",
+    "linux/*",
+    "windows/*",
+    "mac/*",
     "install_plantomicsgwas.sh"
 ]
